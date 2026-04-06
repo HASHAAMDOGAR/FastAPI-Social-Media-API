@@ -12,6 +12,14 @@ class CreatePost(BaseModel):
     content: str
     published: bool = True
 
+class UserOut(BaseModel):
+    id: int
+    email: EmailStr
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
 class Post(BaseModel):
     id: int
     title: str
@@ -35,14 +43,6 @@ class UpdatePost(BaseModel):
     title: Optional[str] = None
     content: Optional[str] = None
     published: Optional[bool] = None
-
-class UserOut(BaseModel):
-    id: int
-    email: EmailStr
-    created_at: datetime
-
-    class Config:
-        from_attributes = True
 
 
 
