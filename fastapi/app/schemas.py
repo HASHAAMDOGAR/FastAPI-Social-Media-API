@@ -12,6 +12,18 @@ class CreatePost(BaseModel):
     content: str
     published: bool = True
 
+class Post(BaseModel):
+    id: int
+    title: str
+    content: str
+    published: bool = True
+    created_at: datetime
+    owner_id: int
+    owner: UserOut
+
+    class Config:
+        from_attributes = True
+
 class PostOut(BaseModel):
     post: Post
     votes: int
@@ -32,17 +44,7 @@ class UserOut(BaseModel):
     class Config:
         from_attributes = True
 
-class Post(BaseModel):
-    id: int
-    title: str
-    content: str
-    published: bool = True
-    created_at: datetime
-    owner_id: int
-    owner: UserOut
 
-    class Config:
-        from_attributes = True
 
 class CreateUser(BaseModel):
     email: EmailStr
